@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="program.css">
+</head>
+<body>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+   <h1>Program 4</h1>
+   <pre>
+      <code>
+      binary_string = "1100.011"
+      
+      integer_binary, fractional_binary = binary_string.split('.')
+      
+      integer_decimal = int(integer_binary, 2)
+      
+      fractional_decimal = 0
+      for i, bit in enumerate(fractional_binary):
+          fractional_decimal += int(bit) * (2 ** -(i + 1))
+      decimal_number = integer_decimal + fractional_decimal
+      
+      print(f"Decimal representation of {binary_string} is {decimal_number}")
+      </code>
+      </pre>
+      <h1>Output</h1>
+      <pre>
+      <code>
+      Decimal representation of 1100.011 is 12.375
+      </code>
+      </pre>
+      
+  </body>
+</html>
+</body>
+</html>

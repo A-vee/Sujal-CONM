@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="program.css">
+</head>
+<body>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+   <h1>Program 6</h1>
+   <pre>
+      <code>
+      # Input binary numbers as strings
+      binary1 = "1101"  # Example binary number 1
+      binary2 = "1011"  # Example binary number 2
+      
+      # Convert binary numbers to decimal
+      decimal1 = int(binary1, 2)
+      decimal2 = int(binary2, 2)
+      
+      # Subtract the decimal numbers
+      decimal_difference = decimal1 - decimal2
+      
+      # Convert the result back to binary
+      # Use bin() and remove the '0b' prefix
+      if decimal_difference &gt;= 0:
+          binary_difference = bin(decimal_difference).replace("0b", "")
+      else:
+          # Handle negative result (optional)
+          binary_difference = '-' + bin(abs(decimal_difference)).replace("0b", "")
+      
+      print(f"Difference of {binary1} and {binary2} is {binary_difference}")
+      </code>
+      </pre>
+      <h1>Output</h1>
+      <pre>
+      <code>
+      Difference of 1101 and 1011 is 10
+      </code>
+      </pre>
+      
+  </body>
+</html>
+</body>
+</html>

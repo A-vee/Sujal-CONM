@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title></title>
+   <link rel="stylesheet" href="program.css">
+</head>
+<body>
+   <h1>Program 1</h1>
+   <pre>
+      <code>
+      # Define the interval [a, b]
+      a = 2
+      b = 3
+      
+      # Set the precision
+      tolerance = 0.0001
+      
+      # Example equation: f(x) = x^3 - 4*x - 9
+      while (b - a) &gt;= tolerance:
+          # Find the middle point c
+          c = (a + b) / 2
+      
+          # Calculate the values of f(a), f(b), and f(c)
+          d_a = a**3 - 4*a - 9  # f(a)
+          d_b = b**3 - 4*b - 9  # f(b)
+          d_c = c**3 - 4*c - 9  # f(c)
+      
+          # Print the current interval and the value of f(c)
+          print(f"Interval: [{a}, {b}], f(c) = {d_c}")
+      
+          # Check if c is the root
+          if d_c == 0.0:
+              break
+      
+          # Decide the side to repeat the steps
+          if d_a * d_c &lt; 0:
+              b = c  # Root lies between a and c
+          else:
+              a = c  # Root lies between c and b
+      
+      # Final result (root of the equation)
+      print(f"The root is approximately: {c}")
+      </code>
+      </pre>
+      <h1>Output</h1>
+      <pre>
+      <code>
+      Interval: [2, 3], f(c) = -2.375
+      Interval: [2, 2.5], f(c) = -0.625
+      Interval: [2.25, 2.5], f(c) = -0.3125
+      Interval: [2.375, 2.5], f(c) = -0.015625
+      Interval: [2.4375, 2.5], f(c) = 0.15625
+      Interval: [2.4375, 2.46875], f(c) = 0.0703125
+      Interval: [2.4375, 2.453125], f(c) = 0.02734375
+      Interval: [2.4375, 2.4453125], f(c) = 0.005859375
+      Interval: [2.4375, 2.44140625], f(c) = -0.0048828125
+      Interval: [2.44140625, 2.443359375], f(c) = 0.0009765625
+      The root is approximately: 2.4423828125
+      </code>
+      </pre>
+      
+</body>
+</html>

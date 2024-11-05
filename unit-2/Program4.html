@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <pre>
+   <code>
+   <h1>4.Program of Newton Rapshon.</h1>
+        #include < stdio.h>
+        #include < math.h>
+        #define f(x) (x * x * x - x * x + 2)
+            
+            
+            #define df(x) (3 * x * x - 2 * x)
+            
+            void newtonRaphson(double x0, double tol, int max_iter) {
+                double x1, f0, df0;
+                int iter = 0;
+            
+                printf("Iter\t x0\t\t f(x0)\t\t x1\t\t f(x1)\n");
+                do {
+                    f0 = f(x0);
+                    df0 = df(x0);
+                    if (df0 == 0.0) {
+                        printf("Mathematical Error: Derivative is zero.\n");
+                        return;
+                    }
+            
+                    x1 = x0 - f0 / df0;
+                    printf("%d\t %lf\t %lf\t %lf\t %lf\n", iter, x0, f0, x1, f(x1));
+            
+                    x0 = x1;
+                    iter++;
+                    if (iter > max_iter) {
+                        printf("Not Convergent.\n");
+                        return;
+                    }
+                } while (fabs(f(x1)) > tol);
+            
+                printf("Root is: %lf\n", x1);
+            }
+            
+            int main() {
+                double initial_guess, tolerance;
+                int max_iterations;
+            
+                
+                printf("Enter initial guess: ");
+                scanf("%lf", &initial_guess);
+                printf("Enter tolerance: ");
+                scanf("%lf", &tolerance);
+                printf("Enter maximum iterations: ");
+                scanf("%d", &max_iterations);
+            
+                newtonRaphson(initial_guess, tolerance, max_iterations);
+            
+                return 0;
+            }
+
+   <h1>Output</h1>
+    Enter the coefficient of x^3 : 1
+    Enter the coefficient of x^2 : 0
+    Enter the coefficient of x : -5
+    Enter the constant term : 2
+    Approximate roots using the Newton ramphson method :
+    iteration 1: x = -2.418182, f(x) = -0.049660
+    iteration 3: x = -2.414214, f(x) = -0.000001
+    Root found between -3 and -2 at x = -2.414214
+    iteration 1: x = 0.411765, f(x) = 0.010991
+    iteration 2: x = 0.414212, f(x) = 0.000007
+    iteration 3: x = 0.414214, f(x) = -0.000000
+    Root found between 0 and 1 at x = 0.414214
+    Exact root found at x = 2.000000
+   </code>
+    </pre>
+  </body>
+</html>

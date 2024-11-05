@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <pre>
+   <code>
+   <h1>2.Regula Falsi (False Position / Interpolation) Method.</h1>
+        #include < stdio.h>
+        #include < math.h>
+            
+            
+            #define f(x) (x * log10(x) - 1.2)
+            
+            int main() {
+                float x0, x1, x2, f0, f1, f2, e;
+                int step = 1;
+            
+                
+                printf("Enter two initial guesses:\n");
+                scanf("%f %f", &x0, &x1);
+                printf("Enter tolerable error:\n");
+                scanf("%f", &e);
+            
+                
+                f0 = f(x0);
+                f1 = f(x1);
+            
+                
+                if (f0 * f1 > 0.0) {
+                    printf("Incorrect initial guesses.\n");
+                    return -1;
+                }
+            
+                
+                printf("\nStep\t\tx0\t\tx1\t\tx2\t\tf(x2)\n");
+                do {
+                    x2 = x0 - (x0 - x1) * f0 / (f0 - f1);
+                    f2 = f(x2);
+            
+                    printf("%d\t\t%f\t%f\t%f\t%f\n", step, x0, x1, x2, f2);
+            
+                    if (f0 * f2 < 0) {
+                        x1 = x2;
+                        f1 = f2;
+                    } else {
+                        x0 = x2;
+                        f0 = f2;
+                    }
+                    step = step + 1;
+                } while (fabs(f2) > e);
+            
+                printf("\nRoot is: %f\n", x2);
+                return 0;
+            }
+   <h1>Output</h1>
+     Enter the coefficient of x^3 : 1
+     Enter the coefficient of x^2 : 1
+     Enter the coefficient of x : 2
+     Enter the constant term : -3
+     Approximate roots using the Regular falsi method :
+     Iteration 1: x1 = 0.750000 x2 = 1.000000 f(x1) = -0.515625 f(x2) = 1.000000
+     Iteration 2: x1 = 0.835052 x2 = 1.000000 f(x1) = -0.050295 f(x2) = 1.000000
+     Iteration 3: x1 = 0.842950 x2 = 1.000000 f(x1) = -0.004562 f(x2) = 1.000000
+     Iteration 4: x1 = 0.843664 x2 = 1.000000 f(x1) = -0.000411 f(x2) = 1.000000
+     Iteration 5: x1 = 0.843728 x2 = 1.000000 f(x1) = -0.000037 f(x2) = 1.000000
+     Iteration 6: x1 = 0.843734 x2 = 1.000000 f(x1) = -0.000003 f(x2) = 1.000000
+     Root found between 0 and 1 at x = 0.843734
+   </code>
+    </pre>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <
+    <pre>
+   <code>
+   <h1>3.Convert Binary to Decimal (Floating Point)</h1>
+   #include < stdio.h>
+        #include < math.h>
+            
+        double binaryToDecimal(const char *binary) {
+        double decimal = 0.0;
+                int point = -1;
+            
+                for (int i = 0; binary[i] != '\0'; i++) {
+                    if (binary[i] == '.') {
+                        point = i;
+                        continue;
+                    }
+                    int bit = binary[i] - '0';
+                    if (point == -1) {
+                        decimal = decimal * 2 + bit;
+                    } else {
+                        decimal += bit * pow(2, -(i - point));
+                    }
+                }
+                return decimal;
+            }
+            
+            int main() {
+                char binary[64];
+                printf("Enter a binary floating-point number: ");
+                scanf("%s", binary);
+                printf("Decimal equivalent: %lf\n", binaryToDecimal(binary));
+                return 0;
+            }
+
+   <h1>Output</h1>
+   Enter a binary floating-point number: 20.3
+   Decimal equivalent: 5.500000    
+   </code>
+    </pre>
+  </body>
+</html>

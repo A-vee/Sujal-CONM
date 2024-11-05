@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <
+    <pre>
+   <code>
+   <h1>4.Convert Decimal to Binary (Floating Point)</h1>
+   #include < stdio.h>
+        #include < math.h>
+            
+                void decimalToBinary(double decimal, char *binary) {
+                int intPart = (int)decimal;
+                double fracPart = decimal - intPart;
+                int i = 0;
+            
+                // Convert integer part to binary
+                while (intPart > 0) {
+                    binary[i++] = (intPart % 2) + '0';
+                    intPart /= 2;
+                }
+                binary[i] = '\0';
+            
+                // Reverse the integer part
+                for (int j = 0; j < i / 2; j++) {
+                    char temp = binary[j];
+                    binary[j] = binary[i - j - 1];
+                    binary[i - j - 1] = temp;
+                }
+            
+                // Add the decimal point
+                binary[i++] = '.';
+            
+                // Convert fractional part to binary
+                while (fracPart > 0 && i < 63) {
+                    fracPart *= 2;
+                    int bit = (int)fracPart;
+                    binary[i++] = bit + '0';
+                    fracPart -= bit;
+                }
+                binary[i] = '\0';
+            }
+            
+            int main() {
+                double decimal;
+                char binary[64];
+                printf("Enter a decimal floating-point number: ");
+                scanf("%lf", &decimal);
+                decimalToBinary(decimal, binary);
+                printf("Binary equivalent: %s\n", binary);
+                return 0;
+            }
+
+   <h1>Output</h1>
+   Enter a decimal floating-point number: 30.21
+   Binary equivalent: 11110.00110101110000101000111101011100001010001111011    
+   </code>
+    </pre>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <
+    <pre>
+   <code>
+   <h1>2.Convert Binary to Decimal.</h1>
+   #include < stdio.h >
+
+    long long convertBinaryToDecimal(long long n);
+        
+    int main() {
+            long long n;
+            printf("Enter a binary number: ");
+            scanf("%lld", &n);
+            printf("%lld in binary = %lld in decimal\n", n, convertBinaryToDecimal(n));
+            return 0;
+        }
+        
+        long long convertBinaryToDecimal(long long n) {
+            long long decimalNumber = 0, base = 1, remainder;
+            while (n > 0) {
+                remainder = n % 10;
+                decimalNumber = decimalNumber + remainder * base;
+                n = n / 10;
+                base = base * 2;
+            }
+            return decimalNumber;
+        }
+        
+   <h1>Output</h1>
+   Enter a binary number: 20
+   20 in binary = 4 in decimal
+   </code>
+    </pre>
+  </body>
+</html>

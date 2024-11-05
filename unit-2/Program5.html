@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <pre>
+   <code>
+   <h1>5.Program of Gauss Elimination.</h1>
+            #include < stdio.h>
+
+                
+                void gaussElimination(int n, float a[n][n+1]) {
+                    int i, j, k;
+                    float factor;
+                
+                    
+                    for (k = 0; k < n; k++) {
+                        for (i = k+1; i < n; i++) {
+                            if (a[k][k] == 0) {
+                                printf("Mathematical Error: Division by zero\n");
+                                return;
+                            }
+                            factor = a[i][k] / a[k][k];
+                            for (j = k; j <= n; j++) {
+                                a[i][j] -= factor * a[k][j];
+                            }
+                        }
+                    }
+                
+                    float x[n];
+                    for (i = n-1; i >= 0; i--) {
+                        x[i] = a[i][n];
+                        for (j = i+1; j < n; j++) {
+                            x[i] -= a[i][j] * x[j];
+                        }
+                        x[i] /= a[i][i];
+                    }
+                
+                    
+                    printf("Solution of the system:\n");
+                    for (i = 0; i < n; i++)
+                        printf("x[%d] = %f\n", i, x[i]);
+                }
+                
+                int main() {
+                    int n = 3; 
+                    float a[3][4] = {{3, 2, -4, 3},
+                                     {2, 3, 3, 15},
+                                     {5, -3, 1, 14}}; // Example coefficients matrix
+                
+                    gaussElimination(n, a);
+                    return 0;
+                }
+
+   <h1>Output</h1>
+    Solution of the system:
+    x[0]=3.000000
+    x[1]=1.000000
+    x[2]=2.000000  
+   </code>
+    </pre>
+  </body>
+</html>

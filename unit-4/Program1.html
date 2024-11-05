@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <pre>
+   <code>
+   <h1>1. Euler's method</h1>
+   #include &lt;studio.h&gt;
+
+   // Define the function f(x, y) = dy/dx
+     double f(double x, double y) {
+       return x + y; // Example: dy/dx = x + y
+   }
+   
+   // Euler's method function
+    void eulerMethod(double x0, double y0, double h, double xn) {
+       double x = x0;
+       double y = y0;
+       
+       printf("x\t\ty\n");
+       printf("%.4f\t%.4f\n", x, y);
+       
+       while (x < xn) {
+           y = y + h * f(x, y);  // Euler's formula: y_(n+1) = y_n + h*f(x_n, y_n)
+           x = x + h;
+           
+           printf("%.4f\t%.4f\n", x, y); // Display x and y at each step
+       }
+   }
+   
+       int main() {
+       double x0, y0, h, xn;
+       
+       // Input initial conditions and step size
+       printf("Enter initial value of x (x0): ");
+       scanf("%lf", &x0);
+       printf("Enter initial value of y (y0): ");
+       scanf("%lf", &y0);
+       printf("Enter step size (h): ");
+       scanf("%lf", &h);
+       printf("Enter the value of x to find y (xn): ");
+       scanf("%lf", &xn);
+       
+       // Perform Euler's method
+       eulerMethod(x0, y0, h, xn);
+       
+       return 0;
+   }
+   
+   <h1>Output</h1>
+   Enter initial value of x (x0): 0
+   Enter initial value of y (y0): 1
+   Enter step size (h): 0.1
+   Enter the value of x to find y (xn): 1.0
+        x		y
+    0.0000	1.0000
+    0.1000	1.1000
+    0.2000	1.2200
+    0.3000	1.3620
+    0.4000	1.5282
+    0.5000	1.7210
+    0.6000	1.9431
+    0.7000	2.1974
+    0.8000	2.4861
+    0.9000	2.8127
+    1.0000	3.1800
+   </code>
+    </pre>
+  </body>
+</html>

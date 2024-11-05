@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <pre>
+   <code>
+   <h1>3. Modified euler's method</h1>
+    #include &lt;stdio.h &gt; 
+
+    // Define the function f(x, y) = dy/dx
+    double f(double x, double y) {
+        return x + y; // Example: dy/dx = x + y
+    }
+    
+    // Modified Euler's method function
+    void modifiedEuler(double x0, double y0, double h, double xn) {
+        double x = x0;
+        double y = y0;
+        double k1, k2;
+        
+        printf("Modified Euler's Method\n");
+        printf("x\t\ty\n");
+        printf("%.4f\t%.4f\n", x, y);
+        
+        while (x < xn) {
+            k1 = h * f(x, y);
+            double y_temp = y + k1; // Temporary y value at x + h
+            k2 = h * f(x + h, y_temp);
+            
+            y = y + (k1 + k2) / 2;
+            x = x + h;
+            
+            printf("%.4f\t%.4f\n", x, y); // Display x and y at each step
+        }
+    }
+    
+    int main() {
+        double x0, y0, h, xn;
+        
+        // Input initial conditions and step size
+        printf("Enter initial value of x (x0): ");
+        scanf("%lf", &x0);
+        printf("Enter initial value of y (y0): ");
+        scanf("%lf", &y0);
+        printf("Enter step size (h): ");
+        scanf("%lf", &h);
+        printf("Enter the value of x to find y (xn): ");
+        scanf("%lf", &xn);
+        
+        // Perform Modified Euler's method
+        modifiedEuler(x0, y0, h, xn);
+        
+        return 0;
+    }
+   
+   <h1>Output</h1>
+   Enter initial value of x (x0): 0
+   Enter initial value of y (y0): 1
+   Enter step size (h): 0.1
+   Enter the value of x to find y (xn): 1.0
+    Modified Euler's Method
+        x		y
+    0.0000	1.0000
+    0.1000	1.1105
+    0.2000	1.2433
+    0.3000	1.4008
+    0.4000	1.5854
+    0.5000	1.7997
+    0.6000	2.0466
+    0.7000	2.3291
+    0.8000	2.6506
+    0.9000	3.0146
+    1.0000	3.4251
+   </code>
+    </pre>
+  </body>
+</html>

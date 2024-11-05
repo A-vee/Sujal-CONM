@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <pre>
+   <code>
+   <h1>2. Runga kutta method</h1>
+   #include &lt;stdio.h&gt;
+
+   // Define the function f(x, y) = dy/dx
+   double f(double x, double y) {
+       return x + y; // Example: dy/dx = x + y
+   }
+   
+   // 2nd-order Runge-Kutta (RK2) method function
+   void rungeKutta2(double x0, double y0, double h, double xn) {
+       double x = x0;
+       double y = y0;
+       double k1, k2;
+       
+       printf("2nd Order Runge-Kutta Method\n");
+       printf("x\t\ty\n");
+       printf("%.4f\t%.4f\n", x, y);
+       
+       while (x < xn) {
+           k1 = h * f(x, y);
+           k2 = h * f(x + h, y + k1);
+           
+           y = y + (k1 + k2) / 2;
+           x = x + h;
+           
+           printf("%.4f\t%.4f\n", x, y); // Display x and y at each step
+       }
+   }
+   
+   // 4th-order Runge-Kutta (RK4) method function
+   void rungeKutta4(double x0, double y0, double h, double xn) {
+       double x = x0;
+       double y = y0;
+       double k1, k2, k3, k4;
+       
+       printf("4th Order Runge-Kutta Method\n");
+       printf("x\t\ty\n");
+       printf("%.4f\t%.4f\n", x, y);
+       
+       while (x < xn) {
+           k1 = h * f(x, y);
+           k2 = h * f(x + h / 2, y + k1 / 2);
+           k3 = h * f(x + h / 2, y + k2 / 2);
+           k4 = h * f(x + h, y + k3);
+           
+           y = y + (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+           x = x + h;
+           
+           printf("%.4f\t%.4f\n", x, y); // Display x and y at each step
+       }
+   }
+   
+   int main() {
+       double x0, y0, h, xn;
+       int method;
+       
+       // Input initial conditions and step size
+       printf("Enter initial value of x (x0): ");
+       scanf("%lf", &x0);
+       printf("Enter initial value of y (y0): ");
+       scanf("%lf", &y0);
+       printf("Enter step size (h): ");
+       scanf("%lf", &h);
+       printf("Enter the value of x to find y (xn): ");
+       scanf("%lf", &xn);
+       
+       // Choose the method
+       printf("Choose Runge-Kutta method:\n");
+       printf("1. 2nd Order Runge-Kutta\n");
+       printf("2. 4th Order Runge-Kutta\n");
+       printf("Enter your choice (1 or 2): ");
+       scanf("%d", &method);
+       
+       if (method == 1) {
+           rungeKutta2(x0, y0, h, xn);
+       } else if (method == 2) {
+           rungeKutta4(x0, y0, h, xn);
+       } else {
+           printf("Invalid choice.\n");
+       }
+       
+       return 0;
+   }
+
+   <h1>Output</h1>
+    Enter initial value of x (x0): 0
+    Enter initial value of y (y0): 1
+    Enter step size (h): 0.1
+    Enter the value of x to find y (xn): 1.0
+    Choose Runge-Kutta method:
+    1. 2nd Order Runge-Kutta
+    2. 4th Order Runge-Kutta
+    Enter your choice (1 or 2): 2
+    4th Order Runge-Kutta Method
+        x		y
+    0.0000	1.0000
+    0.1000	1.1103
+    0.2000	1.2428
+    0.3000	1.3997
+    0.4000	1.5832
+    0.5000	1.7957
+    0.6000	2.0402
+    0.7000	2.3201
+    0.8000	2.6391
+    0.9000	3.0013
+    1.0000	3.4116
+   </code>
+    </pre>
+  </body>
+</html>
